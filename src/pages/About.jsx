@@ -1,3 +1,5 @@
+import beachImg from '../assets/images/product_on_beach.jpg';
+
 const About = () => {
   return (
     <div className="pt-20">
@@ -42,12 +44,12 @@ const About = () => {
             </div>
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden shadow-xl">
-                <img 
-                  src="/src/assets/images/product_on_beach.jpg" 
-                  alt="REVN Brand Story"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+                  <img 
+                    src={beachImg}
+                    alt="REVN Brand Story"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
             </div>
           </div>
         </div>

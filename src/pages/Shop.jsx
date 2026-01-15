@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import allProductsImg from '../assets/images/all_products.jpg';
+import foamImg from '../assets/images/foam.png';
+import brushImg from '../assets/images/brush.png';
+import clothImg from '../assets/images/cloth.png';
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -58,7 +62,7 @@ const Shop = () => {
 
                 <div className="bg-gradient-to-br from-primary-100 to-blue-100 p-8 flex items-center justify-center overflow-hidden">
                   <img 
-                    src="/src/assets/images/all_products.jpg" 
+                    src={allProductsImg} 
                     alt="REVN Premium Foam Kit - Complete Set"
                     className="w-full h-64 object-contain"
                   />
@@ -125,7 +129,7 @@ const Shop = () => {
             <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow">
               <div className="mb-4 flex justify-center">
                 <img 
-                  src="/src/assets/images/foam.png" 
+                  src={foamImg} 
                   alt="Premium Cleaning Foam"
                   className="w-32 h-32 object-contain"
                 />
@@ -140,7 +144,7 @@ const Shop = () => {
             <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow">
               <div className="mb-4 flex justify-center">
                 <img
-                  src="/src/assets/images/brush.png"
+                  src={brushImg}
                   alt="Soft Bristle Brush"
                   className="w-32 h-32 object-contain"
                 />
@@ -155,7 +159,7 @@ const Shop = () => {
             <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow">
               <div className="mb-4 flex justify-center">
                 <img
-                  src="/src/assets/images/cloth.png"
+                  src={clothImg}
                   alt="Microfiber Cloth"
                   className="w-32 h-32 object-contain"
                 />

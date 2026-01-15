@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import beachImg from '../assets/images/product_on_beach.jpg';
+import foamImg from '../assets/images/foam.png';
+import brushImg from '../assets/images/brush.png';
+import clothImg from '../assets/images/cloth.png';
+import allProductsImg from '../assets/images/all_products.jpg';
 
 const ProductDetail = () => {
   const location = useLocation();
@@ -8,11 +13,11 @@ const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   const images = [
-    { src: "/src/assets/images/product_on_beach.jpg", alt: "Lifestyle Shot" },
-    { src: "/src/assets/images/foam.png", alt: "Premium Cleaning Foam" },
-    { src: "/src/assets/images/brush.png", alt: "Soft Bristle Brush" },
-    { src: "/src/assets/images/cloth.png", alt: "Microfiber Cloth" },
-    { src: "/src/assets/images/all_products.jpg", alt: "Complete Kit" }
+    { src: beachImg, alt: "Lifestyle Shot" },
+    { src: foamImg, alt: "Premium Cleaning Foam" },
+    { src: brushImg, alt: "Soft Bristle Brush" },
+    { src: clothImg, alt: "Microfiber Cloth" },
+    { src: allProductsImg, alt: "Complete Kit" }
   ];
 
   const prevImage = () => setSelectedImage((i) => (i - 1 + images.length) % images.length);

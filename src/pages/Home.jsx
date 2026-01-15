@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import beachImg from '../assets/images/product_on_beach.jpg';
 
 const Home = () => {
   return (
@@ -52,7 +53,7 @@ const Home = () => {
               <div className="relative bg-white rounded-3xl p-8 shadow-2xl overflow-hidden">
                 <div className="aspect-square rounded-2xl overflow-hidden">
                   <img 
-                    src="/src/assets/images/product_on_beach.jpg" 
+                    src={beachImg} 
                     alt="REVN Premium Foam Kit" 
                     className="w-full h-full object-cover"
                   />
