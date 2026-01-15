@@ -41,13 +41,13 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="/shop"
+            <Link
+              to="/shop"
               aria-label="Buy Now - go to shop"
               className="bg-primary-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-primary-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Buy Now
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -94,14 +94,14 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="/shop"
+            <Link
+              to="/shop"
               onClick={() => setIsOpen(false)}
               aria-label="Buy Now - go to shop"
               className="w-full text-left px-3 py-2 bg-primary-600 text-white rounded-md font-medium hover:bg-primary-700 transition-colors duration-200"
             >
               Buy Now
-            </a>
+            </Link>
           </div>
         </div>
       )}
