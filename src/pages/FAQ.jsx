@@ -149,8 +149,8 @@ const FAQ = () => {
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Call Us</h3>
               <p className="text-gray-600 text-sm mb-3">Mon-Fri: 9AM-6PM EST</p>
-              <a href="tel:1-800-REVN-CARE" className="text-primary-600 font-semibold hover:text-primary-700">
-                1-800-REVN-CARE
+              <a href="tel:+919497516303" className="text-primary-600 font-semibold hover:text-primary-700">
+                +91 94975 16303
               </a>
             </div>
 
