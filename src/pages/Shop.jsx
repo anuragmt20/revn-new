@@ -113,66 +113,7 @@ const Shop = () => {
 
       
 
-      {/* What's Included Section */}
-      <section className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-gray-900 mb-4">
-              What's Included in Your Kit
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need for professional shoe care
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow">
-              <div className="mb-4 flex justify-center">
-                <img 
-                  src={foamImg} 
-                  alt="Premium Cleaning Foam"
-                  className="w-32 h-32 object-contain"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Premium Cleaning Foam</h3>
-              <p className="text-gray-600 leading-relaxed">
-                100ml of our professional-grade cleaning formula. pH-balanced, biodegradable, 
-                and safe for all shoe materials.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow">
-              <div className="mb-4 flex justify-center">
-                <img
-                  src={brushImg}
-                  alt="Soft Bristle Brush"
-                  className="w-32 h-32 object-contain"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Soft-Bristle Brush</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Professional cleaning brush with soft bristles that won't damage delicate 
-                materials while effectively removing dirt.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow">
-              <div className="mb-4 flex justify-center">
-                <img
-                  src={clothImg}
-                  alt="Microfiber Cloth"
-                  className="w-32 h-32 object-contain"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Microfiber Cloth</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Premium ultra-soft microfiber cloth for gentle wiping and buffing. 
-                Reusable and machine washable.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 'What's Included' section moved to Home page */}
 
       {/* Features Section */}
       <section className="py-20 bg-white">
@@ -217,6 +158,7 @@ const Shop = () => {
           </div>
         </div>
       </section>
+      {/* 'Why Choose REVN?' removed as requested */}
     </div>
   );
 };

@@ -11,6 +11,12 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const product = location.state?.product;
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [buyerName, setBuyerName] = useState('');
+  const [contactNo, setContactNo] = useState('');
+  const [deliveryAddress, setDeliveryAddress] = useState('');
+  const [pincode, setPincode] = useState('');
+  const [quantity, setQuantity] = useState(1);
 
   const images = [
     { src: beachImg, alt: "Lifestyle Shot" },
@@ -138,26 +144,120 @@ const ProductDetail = () => {
             {/* Buy Button */}
             <div className="space-y-3">
               {product && (
-                (() => {
-                  const waNumber = '919497516303';
-                  const message = `Hello, I am interested in ${product.name} (₹${totalPrice}). Please assist me with purchasing.`;
-                  const waHref = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
-                  return (
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Buy Now on WhatsApp"
-                      className="w-full inline-flex items-center justify-center gap-3 bg-green-600 text-white py-4 rounded-full font-bold text-lg hover:bg-green-700 transition-all duration-200"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-                        <path d="M20.52 3.48A11.91 11.91 0 0012 .5C6.2.5 1.5 5.2 1.5 11c0 1.93.5 3.8 1.47 5.43L.5 23.5l6.2-2.05A11.94 11.94 0 0012 22.5c5.8 0 10.5-4.7 10.5-10.5 0-3.01-1.18-5.82-3.98-8.52zM12 20.5c-1.3 0-2.57-.35-3.69-1.01l-.26-.16-3.69 1.22 1.24-3.6-.17-.29A8.01 8.01 0 014 11c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
-                        <path d="M17.21 14.1c-.29-.14-1.7-.84-1.96-.94-.26-.1-.45-.14-.64.14-.19.29-.74.94-.9 1.13-.16.19-.32.21-.61.07-.29-.14-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.33.44-.5.15-.17.2-.29.3-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.02-.36-.02-.55-.02-.19 0-.5.07-.76.36-.26.29-1 1.01-1 2.46 0 1.45 1.03 2.86 1.17 3.06.14.19 2.02 3.08 4.9 4.32 2.48 1.05 2.48.7 2.93.66.45-.04 1.46-.6 1.67-1.18.21-.59.21-1.09.15-1.18-.07-.09-.26-.14-.55-.28z"/>
-                      </svg>
-                      Buy Now on WhatsApp
-                    </a>
-                  );
-                })()
+                <>
+                  <button
+                    onClick={() => setShowModal(true)}
+                    aria-label="Buy Now on WhatsApp"
+                    className="w-full inline-flex items-center justify-center gap-3 bg-green-600 text-white py-4 rounded-full font-bold text-lg hover:bg-green-700 transition-all duration-200"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                      <path d="M20.52 3.48A11.91 11.91 0 0012 .5C6.2.5 1.5 5.2 1.5 11c0 1.93.5 3.8 1.47 5.43L.5 23.5l6.2-2.05A11.94 11.94 0 0012 22.5c5.8 0 10.5-4.7 10.5-10.5 0-3.01-1.18-5.82-3.98-8.52zM12 20.5c-1.3 0-2.57-.35-3.69-1.01l-.26-.16-3.69 1.22 1.24-3.6-.17-.29A8.01 8.01 0 014 11c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
+                      <path d="M17.21 14.1c-.29-.14-1.7-.84-1.96-.94-.26-.1-.45-.14-.64.14-.19.29-.74.94-.9 1.13-.16.19-.32.21-.61.07-.29-.14-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.33.44-.5.15-.17.2-.29.3-.48.1-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.02-.36-.02-.55-.02-.19 0-.5.07-.76.36-.26.29-1 1.01-1 2.46 0 1.45 1.03 2.86 1.17 3.06.14.19 2.02 3.08 4.9 4.32 2.48 1.05 2.48.7 2.93.66.45-.04 1.46-.6 1.67-1.18.21-.59.21-1.09.15-1.18-.07-.09-.26-.14-.55-.28z"/>
+                    </svg>
+                    Buy Now on WhatsApp
+                  </button>
+
+                  {showModal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                      <div className="bg-white rounded-xl max-w-lg w-full p-6 mx-4">
+                        <h3 className="text-xl font-bold mb-4">Order details</h3>
+
+                        <div className="space-y-3">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Name</label>
+                            <input
+                              value={buyerName}
+                              onChange={(e) => setBuyerName(e.target.value)}
+                              className="mt-1 block w-full border border-gray-200 rounded-md p-2"
+                              placeholder="Full name"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Contact No</label>
+                            <input
+                              value={contactNo}
+                              onChange={(e) => setContactNo(e.target.value)}
+                              className="mt-1 block w-full border border-gray-200 rounded-md p-2"
+                              placeholder="e.g. +9198XXXXXXXX"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Delivery Address</label>
+                            <textarea
+                              value={deliveryAddress}
+                              onChange={(e) => setDeliveryAddress(e.target.value)}
+                              className="mt-1 block w-full border border-gray-200 rounded-md p-2"
+                              rows={3}
+                              placeholder="House no, street, city"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700">Pincode</label>
+                            <input
+                              value={pincode}
+                              onChange={(e) => setPincode(e.target.value)}
+                              className="mt-1 block w-full border border-gray-200 rounded-md p-2"
+                              placeholder="e.g. 560001"
+                            />
+                          </div>
+
+                          <div className="flex items-center gap-3">
+                            <label className="text-sm font-medium text-gray-700">Quantity</label>
+                            <div className="inline-flex items-center border border-gray-200 rounded-md">
+                              <button
+                                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                                className="px-3 py-2 bg-gray-100"
+                                aria-label="Decrease quantity"
+                              >
+                                -
+                              </button>
+                              <div className="px-4">{quantity}</div>
+                              <button
+                                onClick={() => setQuantity((q) => q + 1)}
+                                className="px-3 py-2 bg-gray-100"
+                                aria-label="Increase quantity"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-6 flex justify-end gap-3">
+                          <button
+                            onClick={() => setShowModal(false)}
+                            className="px-4 py-2 rounded-md bg-gray-100"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            onClick={() => {
+                              const waNumber = '919497516303';
+                              const lines = [];
+                              lines.push(`Product: ${product.name}`);
+                              lines.push(`Price: ₹${totalPrice}`);
+                              lines.push(`Quantity: ${quantity}`);
+                              lines.push(`Name: ${buyerName || 'Not provided'}`);
+                              lines.push(`Contact: ${contactNo || 'Not provided'}`);
+                              lines.push(`Delivery address: ${deliveryAddress || 'Not provided'}`);
+                              lines.push(`Pincode: ${pincode || 'Not provided'}`);
+                              const message = lines.join('\n');
+                              const waHref = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+                              window.open(waHref, '_blank', 'noopener');
+                              setShowModal(false);
+                            }}
+                            className="px-4 py-2 rounded-md bg-green-600 text-white"
+                          >
+                            Confirm & Open WhatsApp
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
